@@ -1,13 +1,56 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { MenuScreen } from './menu';
-import { SampleScreen } from './sample';
+import { Tabs } from "expo-router";
+import React from "react";
 
-export default function StackNavigation() {
-    const Stack = createNativeStackNavigator();
+import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
+
+export default function TabLayout() {
+  const colorScheme = useColorScheme();
+
   return (
-      <Stack.Navigator initialRouteName='Menu'>
-        <Stack.Screen name="Menu" component={MenuScreen} />
-        <Stack.Screen name="Sample" component={SampleScreen} />
-      </Stack.Navigator>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        headerShown: false,
+      }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "home" : "home-outline"}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="camera"
+        options={{
+          title: "Camera",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "camera" : "camera-outline"}
+              color={color}
+            />
+          ),
+        }}
+      />
+         <Tabs.Screen
+        name="postAuth"
+        options={{
+          title: "About",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "camera" : "camera-outline"}
+              color={color}
+            />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }
