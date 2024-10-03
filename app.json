@@ -52,7 +52,20 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
-      ]
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/Inter-Black.otf"]
+        }
+      ],
+      [
+      "expo-font",
+      {
+        "fonts": ["node_modules/@expo-google-fonts/inter/Inter_900Black.ttf"]
+      }
+    ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
